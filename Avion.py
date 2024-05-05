@@ -37,4 +37,29 @@ class Avion:
             else:
                 self.sillasEconomicas.append(Silla(i, True, 'pasillo'))
     
+    def contarSillasEjecutivasOcupadas(self): 
+        nOcupadas = 0 
+        for ejecutivas in self.sillasEjecutivas: 
+            if Silla.sillaAsignada() == True: 
+                nOcupadas += 1  
+                
+    def contarSillaEconomicas(self):
+        contador = 0
+        for i in range(self.SILLAS_ECONOMICAS):
+            if Silla.getPasajero() == None:
+                contador +=1 
+        return contador 
+    
+    def contarPasilloEjecutivas(self):
+        contador = 0 
+        for i in range(self.sillasEjecutivas): 
+            if Silla.getUbicacion1() == 'pasillo' and Silla.getPasajero() == None: 
+                contador += 1 
+        return contador 
+
+    def desocuparAvion(self):
+        for i in range(self.SILLAS_ECONOMICAS + self.SILLAS_EJECUTIVAS): 
+            Silla.desasignarPasajero()
+    
+    
     
